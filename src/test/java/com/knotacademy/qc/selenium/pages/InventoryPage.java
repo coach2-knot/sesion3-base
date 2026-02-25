@@ -9,11 +9,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;;
 
 public class InventoryPage extends BasePage {
 
-    private final By pageTitle = By.className("span.title");
+    //private final By pageTitle = By.className("title");
+    private final By pageTitle = By.cssSelector("span.title");
     /// span[contains(text(),"Products")]
     private final By addBackpackButton = By.id("add-to-cart-sauce-labs-backpack");
     private final By addTShirt = By.id("add-to-cart-sauce-labs-bolt-t-shirt");
     private final By cartBadge = By.cssSelector(".shopping_cart_link .shopping_cart_badge");
+    private final By cartLink = By.className("shopping_cart_link");
 
     public InventoryPage(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);
@@ -43,6 +45,10 @@ public class InventoryPage extends BasePage {
         }
 
         return Integer.parseInt(value.trim());
+    }
+
+    public void openCart(){
+        click(cartLink);
     }
 
 }
